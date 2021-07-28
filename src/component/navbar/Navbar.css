@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+}
+
+.navbar {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #4964bb;
+    border-radius: 20px;
+    /* border-bottom: 10px solid #594fc9; */
+  }
+
+.links{
+    margin-left: auto;
+}
+
+a {
+    text-decoration: none;
+    padding: 6px;
+    color: rgb(8, 8, 8);
+    font-weight: bold;
+}
+
+a:hover {
+    color: #35f199;
+}
+
+.logo {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
