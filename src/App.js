@@ -6,6 +6,8 @@ import Login from './component/login/Login';
 import Dashboard from './component/dashboard/Dashboard';
 import Alerts from './component/alerts/Alerts';
 import Contract from './component/contract/Contract';
+import Register from './component/register/Register';
+import Lostpswd from './component/lostpswd/Lostpswd';
 
 
 
@@ -21,7 +23,21 @@ function App() {
 
   if (!token.name) {
     return (
-      <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/lostpswd">
+              <Lostpswd />
+            </Route>
+            <Route path="/">
+              <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     )
   }
 
