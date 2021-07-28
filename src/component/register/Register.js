@@ -70,7 +70,7 @@ const Register = () => {
           <div className="conditions">
             <label><input type="checkbox"/> I agree to the terms & conditions</label>
           </div>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
      );
