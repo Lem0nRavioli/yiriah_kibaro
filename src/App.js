@@ -8,6 +8,7 @@ import Alerts from './component/alerts/Alerts';
 import Contract from './component/contract/Contract';
 import Register from './component/register/Register';
 import Lostpswd from './component/lostpswd/Lostpswd';
+import Terms from './component/terms&conditions/Terms';
 
 
 
@@ -15,8 +16,10 @@ function App() {
   const [token, setToken] = useState({name: ""});
   const [error, setError] = useState("");
 
+
   // DEAL WITH AUTH DATA HERE & component/login
   const adminUser = {
+    email: "admin@admin.com",
     username: "admin",
     password: "adminadmin123"
   }
@@ -30,7 +33,10 @@ function App() {
               <Register />
             </Route>
             <Route path="/lostpswd">
-              <Lostpswd />
+              <Lostpswd adminUser={adminUser} />
+            </Route>
+            <Route path="/terms">
+              <Terms />
             </Route>
             <Route path="/">
               <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />

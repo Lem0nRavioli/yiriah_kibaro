@@ -29,6 +29,7 @@ const Login = ( {setToken, setError, adminUser, error} ) => {
                     <p>Username</p>
                     <input 
                         type="text"
+                        placeholder={"Username"}
                         onChange={e => setUserName(e.target.value)}
                         value={username}
                     />
@@ -37,6 +38,7 @@ const Login = ( {setToken, setError, adminUser, error} ) => {
                     <p>Password</p>
                     <input 
                         type="password"
+                        placeholder={"Password"}
                         onChange={e => setPassword(e.target.value)}
                         value={password}
                     />

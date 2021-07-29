@@ -1,6 +1,7 @@
 import './Register.css'
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
 
 
 const Register = () => {
@@ -13,15 +14,30 @@ const Register = () => {
     const [companyName, setCompanyName] = useState('');
     const [adress, setAdress] = useState('');
 
+    const [message, setMessage] = useState('');
 
-    const handleSubmit = () => {
-        console.log('submitted !')
-        history.push('/');
+
+    const handleSubmit = ( e ) => {
+      e.preventDefault();
+      const data = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        companyName: companyName,
+        adress: adress
+      }
+      setMessage('Thank you for your registration !')
+      console.log(data)
+      // simulate server delay
+      setTimeout(() => {history.push('/');}, 3000);
     }
 
     return ( 
         <div className="create">
-        <h2>REGISTER</h2>
+        <h1>REGISTER</h1>
+        <br/>
+        <h3 className="response-message">{message}</h3>
         <form onSubmit={handleSubmit}>
         <div className="fields">
           <div>
@@ -68,10 +84,15 @@ const Register = () => {
             </div>
           </div>
           <div className="conditions">
-            <label><input type="checkbox"/> I agree to the terms & conditions</label>
+            <Link to="/terms">Terms & conditions</Link>
+            <label><input required type="checkbox"/> I agree to the terms & conditions</label>
           </div>
           <button type="submit">Submit</button>
         </form>
+        <div className="nologs">
+                <Link to="/">Log In</Link>
+                <Link to="/lostpswd">Forgot password</Link>
+        </div>
       </div>
      );
 }
