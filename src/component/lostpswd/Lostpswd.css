@@ -35,11 +35,11 @@
     font-weight: bold;
 }
 
-.lostpswd-wrapper.error {
+.lostpswd-wrapper .error {
     color: red;
 }
 
-.lostpswd-wrapper.response-message {
+.lostpswd-wrapper .response-message {
     color: rgb(40, 170, 40);
 }
 

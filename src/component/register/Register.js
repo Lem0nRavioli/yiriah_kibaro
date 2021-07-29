@@ -84,7 +84,7 @@ const Register = () => {
             </div>
           </div>
           <div className="conditions">
-            <Link to="/terms">Terms & conditions</Link>
+            <Link to="/terms" target="_blank">Terms & conditions</Link>
             <label><input required type="checkbox"/> I agree to the terms & conditions</label>
           </div>
           <button type="submit">Submit</button>
