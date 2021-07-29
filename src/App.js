@@ -9,6 +9,7 @@ import Contract from './component/contract/Contract';
 import Register from './component/register/Register';
 import Lostpswd from './component/lostpswd/Lostpswd';
 import Terms from './component/terms&conditions/Terms';
+import Test from './component/test/Test';
 
 
 
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route path="/terms">
               <Terms />
+            </Route>
+            <Route path="/test">
+              <Test />
             </Route>
             <Route path="/">
               <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />
