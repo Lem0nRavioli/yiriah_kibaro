@@ -1,11 +1,16 @@
 import './Test.css';
 import useFetch from '../../fetch/useFetch';
+import { useState } from 'react';
 
 const Test = () => {
-    const { error, isPending, data} = useFetch('') // add fetch adress here
+    const [adress, setAdress] = useState('');
+    const { error, isPending, data } = useFetch(adress) // add fetch adress here
 
     const handleClick = () => {
         console.log(data);
+        if (data.data.AccessToken){
+            console.log(data.data.AccessToken);
+        }        
     }
 
     return ( 
@@ -13,7 +18,18 @@ const Test = () => {
             <h1>TEST PAGE</h1>
             { error && <div>{ error }</div> }
             { isPending && <div>Loading...</div> }
-            { data && <div>Check console</div> }
+            { data && <div> Data Ready </div> }
+            <div>
+                <label>
+                    <p>Adress</p>
+                    <input 
+                        type="text"
+                        placeholder={"Adress"}
+                        onChange={e => setAdress(e.target.value)}
+                        value={adress}
+                    />
+                </label>
+                </div>
             <button onClick={handleClick}>LOG DATA</button>
         </div>
      );
