@@ -10,6 +10,8 @@ import Register from './component/register/Register';
 import Lostpswd from './component/lostpswd/Lostpswd';
 import Terms from './component/terms&conditions/Terms';
 import Test from './component/test/Test';
+import TestPost from './component/test/TestPost';
+import TestGet from './component/test/TestGet';
 
 
 
@@ -41,6 +43,12 @@ function App() {
             </Route>
             <Route path="/test">
               <Test />
+            </Route>
+            <Route path="/testpost">
+              <TestPost />
+            </Route>
+            <Route path="/testget">
+              <TestGet />
             </Route>
             <Route path="/">
               <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />
