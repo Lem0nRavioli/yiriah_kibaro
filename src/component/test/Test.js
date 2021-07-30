@@ -9,7 +9,7 @@ const Test = () => {
     const handleClick = () => {
         console.log(data);
         console.log(adress)
-        if (data.data.AccessToken){
+        if (data){
             console.log(data.data.AccessToken);
         }        
     }

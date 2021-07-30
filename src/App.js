@@ -16,6 +16,8 @@ import TestGet from './component/test/TestGet';
 
 
 function App() {
+  const client_id = '4cibpc9gdp489vl97iis0chjtl';
+  const client_secret = '1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui'
   const [token, setToken] = useState({name: ""});
   const [error, setError] = useState("");
 
