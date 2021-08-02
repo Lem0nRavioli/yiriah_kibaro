@@ -4,7 +4,7 @@ import { useState } from 'react';
 const TestGet = () => {
     const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
     // const postAdress = '/v1/registration/users/confirmation/';
-    const postAdress = '/v1/kibaro/reports/users/6103e34c65526fedd81221b7';
+    const postAdress = '/v1/kibaro/reports';
 
     // const email = "licafiy447@hyprhost.com";
     // const password = "Testpassword1!";

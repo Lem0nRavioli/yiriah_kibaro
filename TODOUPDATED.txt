@@ -1,0 +1,34 @@
+create new account
+	get token OK
+	post bearer + token OK
+	get response (success / failure / error) OK
+
+verif account email + code
+	get username (email) + code OK
+		response (success / failure / error) OK
+
+
+
+
+Authentification 
+	get (username + pswd) => get success / failure / error OK
+		if success log OK
+		if failure display invalid OK
+		if error display error OK
+
+REPORTS (userid)
+	users/{userId}
+		GOT DATA OK
+	reports (create)
+	reports (search)
+
+ADD VARIABLE ENVIRONEMENT FICHER TXT
+	Create .env file outside src OK
+	add variable without '', adding REACT_APP_ before them OK
+	save file, call variables names with process.env.REACT_APP_* OK
+
+
+
+OPTIONAL TODO:
+- Make element get token 
+- Remake kibaro-web with element get token

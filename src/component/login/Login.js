@@ -27,6 +27,7 @@ const Login = ( {token, setUserToken, serverAdress} ) => {
           .then(data => {
               // DEFINE VALID USER HERE
               console.log(data.data.userId);
+              console.log(data);
               setUserToken(data);
           })
           .catch(err => {

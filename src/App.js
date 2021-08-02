@@ -17,12 +17,15 @@ import TestGet from './component/test/TestGet';
 
 
 function App() {
-  const client_id = '4cibpc9gdp489vl97iis0chjtl';
-  const client_secret = '1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui'
+  // const client_id = '4cibpc9gdp489vl97iis0chjtl';
+  // const client_secret = '1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui';
+  const client_id = process.env.REACT_APP_CLIENT_ID;
+  const client_secret = process.env.REACT_APP_CLIENT_SECRET;
   const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
   const {data} = useFetch('https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app/v1/authentication/oauth2/token/' + client_id + '/' + client_secret);
   const [userToken, setUserToken] = useState({});
   const [error, setError] = useState("");
+
 
 
   // DEAL WITH AUTH DATA HERE & component/login
@@ -73,7 +76,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Dashboard />
+              <Dashboard serverAdress={serverAdress} userToken={userToken} />
             </Route>
             <Route path="/alerts">
               <Alerts />
