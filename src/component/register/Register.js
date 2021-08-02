@@ -6,10 +6,8 @@ import Confirmation from './Confirmation';
 
 
 
-const Register = () => {
+const Register = ( {token, serverAdress} ) => {
     // const history = useHistory();
-    const { data } = useFetch('https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app/v1/authentication/oauth2/token/4cibpc9gdp489vl97iis0chjtl/1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui');
-    const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
     const postAdress = '/v1/registration/users';
 
     const [isSubmit, setIsSubmit] = useState(false);
@@ -31,9 +29,6 @@ const Register = () => {
 
     const handleSubmit = ( e ) => {
       e.preventDefault();
-      console.log(data)
-      const tempToken = data.data.AccessToken;
-      console.log(tempToken)
       const user = {
         email: email,
         password: password,
@@ -48,7 +43,7 @@ const Register = () => {
         method: 'POST',
         headers: { 
             "Content-Type": "application/json",
-            'Authorization': 'Bearer ' + tempToken },
+            'Authorization': 'Bearer ' + token },
         body: JSON.stringify(user)
       })
       .then((response) => {
@@ -137,7 +132,7 @@ const Register = () => {
       );
     } else {
       return ( 
-        <Confirmation adress={serverAdress} username={email} token={data.data.AccessToken} />
+        <Confirmation adress={serverAdress} username={email} token={token} />
        )
     }
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 const TestGet = () => {
     const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
     // const postAdress = '/v1/registration/users/confirmation/';
-    const postAdress = '/v1/authentication/users/hirona_mj@hotmail.fr/Testpassword1!';
+    const postAdress = '/v1/kibaro/reports/users/6103e34c65526fedd81221b7';
 
     // const email = "licafiy447@hyprhost.com";
     // const password = "Testpassword1!";
@@ -23,7 +23,22 @@ const TestGet = () => {
               "Content-Type": "application/json",
               'Authorization': 'Bearer ' + token },
         })
-        .then((response) => console.log(response))
+        .then(res => {
+            if (!res.ok) { // error coming back from server
+                throw Error('INVALID USER');
+            } 
+            return res.json();
+          })
+        // .then((response) => response.json())
+        .then(data => {
+            // DEFINE VALID USER HERE
+            console.log(data)
+        })
+        .catch(err => {
+            // DEFINE INVALID USER/PASS RESPONSE HERE
+            console.log(err.message)
+        })
+        
       }
 
     return ( 

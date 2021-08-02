@@ -2,21 +2,47 @@ import './Login.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = ( {setToken, setError, adminUser, error} ) => {
+const Login = ( {token, setUserToken, serverAdress} ) => {
+    const endpoint = '/v1/authentication/users/';
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const LogUser = details => {
-        if (details.username === username && details.password === password) {
-          setToken({name: details.username});
-        } else {
-          setError("Invalid user or password");
-        }
+        const adress = serverAdress + endpoint + details.username + '/' + details.password
+
+        fetch(adress, {
+            method: 'GET',
+            headers: { 
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + token },
+          })
+          .then(res => {
+              if (!res.ok) { // error coming back from server
+                  throw Error('INVALID USER');
+              } 
+              return res.json();
+            })
+          // .then((response) => response.json())
+          .then(data => {
+              // DEFINE VALID USER HERE
+              console.log(data.data.userId);
+              setUserToken(data);
+          })
+          .catch(err => {
+              // DEFINE INVALID USER/PASS RESPONSE HERE
+              setError('Invalid user or password.');
+            //   console.log(err.message)
+          })
       }
 
     const handleSubmit = e => {
         e.preventDefault();
-        LogUser(adminUser)
+        const user = {
+            username: username,
+            password: password
+        }
+        LogUser(user)
     }
 
     return (
@@ -44,7 +70,7 @@ const Login = ( {setToken, setError, adminUser, error} ) => {
                     />
                 </label>
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Log In</button>
                 </div>
             </form>
             <div className="nologs">

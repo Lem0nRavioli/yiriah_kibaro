@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useState } from 'react'
+import useFetch from './fetch/useFetch';
 import Navbar from './component/navbar/Navbar';
 import Login from './component/login/Login';
 import Dashboard from './component/dashboard/Dashboard';
@@ -18,7 +19,9 @@ import TestGet from './component/test/TestGet';
 function App() {
   const client_id = '4cibpc9gdp489vl97iis0chjtl';
   const client_secret = '1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui'
-  const [token, setToken] = useState({name: ""});
+  const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
+  const {data} = useFetch('https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app/v1/authentication/oauth2/token/' + client_id + '/' + client_secret);
+  const [userToken, setUserToken] = useState({});
   const [error, setError] = useState("");
 
 
@@ -29,13 +32,14 @@ function App() {
     password: "adminadmin123"
   }
 
-  if (!token.name) {
+  if (!userToken.status) {
     return (
       <Router>
         <div className="App">
           <Switch>
             <Route path="/register">
-              <Register />
+              { !data && <div>Loading...</div> }
+              { data && <Register tokenData={data.data.AccessToken} serverAdress={serverAdress}  /> }              
             </Route>
             <Route path="/lostpswd">
               <Lostpswd adminUser={adminUser} />
@@ -53,7 +57,8 @@ function App() {
               <TestGet />
             </Route>
             <Route path="/">
-              <Login setToken={setToken} setError={setError} adminUser={adminUser} error={error} />
+              { !data && <div>Loading...</div>}
+              { data && <Login token={data.data.AccessToken} setUserToken={setUserToken} serverAdress={serverAdress} /> }
             </Route>
           </Switch>
         </div>
@@ -64,7 +69,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar setToken={setToken} setError={setError}/>
+        <Navbar setToken={setUserToken} setError={setError}/>
         <div className="content">
           <Switch>
             <Route exact path="/">

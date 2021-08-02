@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const Confirmation = ( {adress, username, token} ) => {
-    const postAdress = '/v1/registration/users/confirmation/';
+    const endpoint = '/v1/registration/users/confirmation/';
     const history = useHistory();
     const [code, setCode] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -11,7 +11,7 @@ const Confirmation = ( {adress, username, token} ) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        const getAdress = adress + postAdress + username + '/' + code;
+        const getAdress = adress + endpoint + username + '/' + code;
         fetch(getAdress, {
           method: 'GET',
           headers: { 
@@ -36,9 +36,10 @@ const Confirmation = ( {adress, username, token} ) => {
             <h3 className="success">{successMessage}</h3>
             <h3 className="error">{error}</h3>
             <div>
+                <p>Confirm your email with the code we just sent you please.</p>
+                <p>Your email: {username}</p>
                 <label>
-                    <p>{username}</p>
-                    <p>Confirm your email please.</p>
+                    <p>Validation code:</p>
                     <input 
                         type="number"
                         placeholder={"code"}
