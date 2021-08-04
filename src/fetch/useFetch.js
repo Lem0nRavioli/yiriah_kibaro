@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url) => {
+const useFetch = (url, token) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +9,13 @@ const useFetch = (url) => {
     const abortCont = new AbortController();
 
 
-    fetch(url, { signal: abortCont.signal })
+    fetch(url, { 
+      signal: abortCont.signal,
+      method: 'GET',
+      headers: { 
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer ' + token }, 
+    })
     .then(res => {
       if (!res.ok) { // error coming back from server
         throw Error('could not fetch the data for that resource');

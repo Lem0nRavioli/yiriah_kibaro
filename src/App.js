@@ -22,7 +22,7 @@ function App() {
   const client_id = process.env.REACT_APP_CLIENT_ID;
   const client_secret = process.env.REACT_APP_CLIENT_SECRET;
   const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
-  const {data} = useFetch('https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app/v1/authentication/oauth2/token/' + client_id + '/' + client_secret);
+  const {data} = useFetch('https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app/v1/authentication/oauth2/token/' + client_id + '/' + client_secret, '');
   const [userToken, setUserToken] = useState({});
   const [error, setError] = useState("");
 
