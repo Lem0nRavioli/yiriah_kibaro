@@ -17,8 +17,6 @@ import TestGet from './component/test/TestGet';
 
 
 function App() {
-  // const client_id = '4cibpc9gdp489vl97iis0chjtl';
-  // const client_secret = '1c3lpejbblall713def7tif5hiojmiuj1ja3bcd7mu7jh2a16gui';
   const client_id = process.env.REACT_APP_CLIENT_ID;
   const client_secret = process.env.REACT_APP_CLIENT_SECRET;
   const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
