@@ -17,6 +17,7 @@ import TestGet from './component/test/TestGet';
 
 
 function App() {
+
   const client_id = process.env.REACT_APP_CLIENT_ID;
   const client_secret = process.env.REACT_APP_CLIENT_SECRET;
   const serverAdress = 'https://kibaro-authentication-svc-cgqlclia4q-nw.a.run.app';
@@ -28,9 +29,9 @@ function App() {
 
   // DEAL WITH AUTH DATA HERE & component/login
   const adminUser = {
-    email: "admin@admin.com",
-    username: "admin",
-    password: "adminadmin123"
+    email: "",
+    username: "",
+    password: ""
   }
 
   if (!userToken.status) {
